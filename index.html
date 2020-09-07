@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Container {
+        construcour(value) {
+          this._value = value;
+        }
+        map(fn) {
+          return new Container(fn(this._value));
+        }
+      }
+    </script>
+  </body>
+</html>
