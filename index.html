@@ -3,16 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>函子</title>
   </head>
   <body>
     <script>
-      class Container {
-        construcour(value) {
-          this._value = value;
+      // class Container {
+      //   construcour(value) {
+      //     this._value = value;
+      //   }
+      //   map(fn) {
+      //     return new Container(fn(this._value));
+      //   }
+      // }
+
+      class Maybe {
+        constructor(value) {
+          this._value = value
+        }
+        static of(value) {
+          return new Maybe(value)
         }
         map(fn) {
-          return new Container(fn(this._value));
+          return Maybe.of(fn(this._value))
         }
       }
     </script>
