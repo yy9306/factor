@@ -7,7 +7,6 @@
 // Monad是可以变扁的函子
 // 一个函子如果具有join 和 of 两个方法并遵循一些定律就是一个Monad
 
-
 const _ = require("lodash");
 const { split, find } = require('lodash/fp');
 const { task } = require('folktale/concurrency/task');
