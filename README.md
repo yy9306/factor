@@ -19,9 +19,17 @@ class Container{
 const r = Container.of(5).map(x => x + 2).map(x => x * x)
 ```
 
+#### 总结：
+ * 函数式编程的运算不直接操作值，而是由函子完成
+ * 函子就是一个实现了map契约(方法)的对象
+ * 我们可以吧函子想象成一个函子，这个盒子里封装了一个值
+ * 想要处理盒子中的值，我们需要给盒子的map方法传递一个处理函数(纯函数)，由这个函数来对值进行处理
+ * 最终map方法返回一个包含新值的盒子(函子)
+
 ## MayBe 函子
  - 我们在编程的过程中可能遇到很多错误，需要对这些信息做相应的处理；
- - MayBe函子的作用就是可以对外部的空值做处理（控制副作用在允许范围内cl）
+ - MayBe函子的作用就是可以对外部的空值做处理（控制副作用在允许范围内）
+
 ```
 class Maybe{
   constructor(value) {
@@ -69,6 +77,14 @@ class Maybe{
     }
   }
 
+  function parseJSON(str) {
+      try {
+          return Right.of(JSON.parse(str))
+      } catch(e) {
+          return Left.of({ error: e.message })
+      }
+  }
+
 ```
 
 ## IO 函子
@@ -97,6 +113,7 @@ class IO{
   }
 }
 ```
+总结： 我们给map传入的可能是一个不纯的操作，但是经过处理之后，我们保证了IO是以一个纯的操作，不纯的操作我们延迟到了调用_value时，也就达到了副作用在可控范围内。
 
 ## Monad 函子
 - Monad是可以变扁的函子
